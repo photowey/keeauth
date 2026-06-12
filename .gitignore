@@ -46,8 +46,8 @@ app.*.map.json
 
 # Android signing (keep private!)
 android/key.properties
-android/app/*.keystore
-android/app/*.jks
+android/*.keystore
+android/*.jks
 
 tmp/
 

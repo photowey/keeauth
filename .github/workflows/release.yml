@@ -5,13 +5,10 @@ on:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+*' # v1.0.0, v1.0.0-rc1, v1.0.0+1
 
-env:
-  # Non-empty → iOS signing secrets are configured
-  HAS_IOS_SIGNING: ${{ secrets.IOS_BUILD_CERTIFICATE_BASE64 }}
-
 jobs:
   # ---------------------------------------------------------------------------
-  # Android — APK (split per ABI) + AAB (Play Store)
+  # Android — verify release build + upload unsigned artifacts
+  # Signed with a CI-only dummy keystore. Production signing is done locally.
   # ---------------------------------------------------------------------------
   android:
     name: Android APK + AAB
@@ -28,28 +25,32 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Decode keystore and create key.properties
-        env:
-          KEYSTORE_B64: ${{ secrets.KEYSTORE_BASE64 }}
-          STORE_PASS: ${{ secrets.KEYSTORE_STORE_PASSWORD }}
-          KEY_PASS:  ${{ secrets.KEYSTORE_KEY_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEYSTORE_KEY_ALIAS }}
+      - name: Generate dummy keystore (CI verification only)
         run: |
-          echo "${KEYSTORE_B64}" | base64 -d > android/keeauth-release.keystore
+          keytool -genkey -v \
+            -keystore android/keeauth-release.keystore \
+            -alias keeauth \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass android -keypass android \
+            -dname "CN=CI Build, OU=CI, O=KeeAuth, L=Unknown, S=Unknown, C=US" \
+            -noprompt
           cat > android/key.properties << EOF
-          storePassword=${STORE_PASS}
-          keyPassword=${KEY_PASS}
-          keyAlias=${KEY_ALIAS}
+          storePassword=android
+          keyPassword=android
+          keyAlias=keeauth
           storeFile=keeauth-release.keystore
           EOF
 
       - name: Flutter pub get
         run: flutter pub get
 
+      - name: Run tests
+        run: flutter test
+
       - name: Build APK (split per ABI)
         run: flutter build apk --release --split-per-abi
 
-      - name: Build AAB (Play Store)
+      - name: Build AAB
         run: flutter build appbundle --release
 
       - name: Upload to release
@@ -62,7 +63,8 @@ jobs:
             build/app/outputs/bundle/release/app-release.aab
 
   # ---------------------------------------------------------------------------
-  # iOS — IPA (macOS required)
+  # iOS — verify release build (unsigned)
+  # Code signing is done locally with Xcode / fastlane.
   # ---------------------------------------------------------------------------
   ios:
     name: iOS IPA
@@ -77,36 +79,11 @@ jobs:
       - name: Flutter pub get
         run: flutter pub get
 
-      - name: Set up code signing (signed release)
-        if: env.HAS_IOS_SIGNING != ''
-        env:
-          CERT_B64: ${{ secrets.IOS_BUILD_CERTIFICATE_BASE64 }}
-          P12_PASS: ${{ secrets.IOS_P12_PASSWORD }}
-          PROFILE_B64: ${{ secrets.IOS_PROVISION_PROFILE_BASE64 }}
-        run: |
-          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
-          security create-keychain -p "" $KEYCHAIN_PATH
-          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
-          security default-keychain -s $KEYCHAIN_PATH
-          security unlock-keychain -p "" $KEYCHAIN_PATH
+      - name: Run tests
+        run: flutter test
 
-          echo "${CERT_B64}" | base64 -d > $RUNNER_TEMP/cert.p12
-          security import $RUNNER_TEMP/cert.p12 \
-            -k $KEYCHAIN_PATH \
-            -P "${P12_PASS}" \
-            -T /usr/bin/codesign
-          security set-key-partition-list -S apple-tool:,apple: -s -k "" $KEYCHAIN_PATH
-
-          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          echo "${PROFILE_B64}" | base64 -d > ~/Library/MobileDevice/Provisioning\ Profiles/build.mobileprovision
-
-      - name: Build IPA (ad-hoc / unsigned)
-        if: env.HAS_IOS_SIGNING == ''
+      - name: Build IPA (unsigned — for verification)
         run: flutter build ipa --release --no-codesign
-
-      - name: Build IPA (App Store signed)
-        if: env.HAS_IOS_SIGNING != ''
-        run: flutter build ipa --release --export-method app-store
 
       - name: Upload to release
         uses: softprops/action-gh-release@v2
