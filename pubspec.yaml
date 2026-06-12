@@ -1,0 +1,102 @@
+name: keeauth
+description: "A secure 2FA Authenticator app with TOTP/HOTP support."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+    sdk: ^3.7.2
+
+dependencies:
+    flutter:
+        sdk: flutter
+    flutter_localizations:
+        sdk: flutter
+
+    cupertino_icons: ^1.0.8
+
+    # State Management
+    flutter_bloc: ^8.1.6
+    equatable: ^2.0.5
+
+    # Dependency Injection
+    get_it: ^8.0.3
+    injectable: ^2.5.0
+
+    # Database (sqflite_sqlcipher replaces sqflite with SQLCipher encryption)
+    path_provider: ^2.1.5
+    path: ^1.9.1
+
+    # Secure Storage
+    flutter_secure_storage: ^9.2.4
+
+    # Cryptography & OTP
+    cryptography: ^2.7.0
+    base32: ^2.1.3
+    pointycastle: ^3.9.1
+
+    # QR Code
+    mobile_scanner: ^6.0.5
+    qr_flutter: ^4.1.0
+
+    # Biometric Auth
+    local_auth: ^2.3.0
+
+    # Utilities
+    rxdart: ^0.28.0
+    uuid: ^4.5.1
+    intl: ^0.20.2
+
+    # File handling
+    file_picker: ^10.1.6
+    image_picker: ^1.1.2
+    image: ^4.3.0
+    share_plus: ^10.1.4
+
+    # HTML parsing
+    html: ^0.15.5
+
+    # XML parsing (for KeePass)
+    xml: ^6.5.0
+
+    # JSON
+    json_annotation: ^4.9.0
+
+    # Permission handling
+    permission_handler: ^11.4.0
+
+    # Crypto utilities
+    crypto: ^3.0.6
+
+    # Package info
+    package_info_plus: ^8.3.0
+    sqflite_sqlcipher: ^3.3.0
+    workmanager: ^0.9.0+3
+
+    # URL launching
+    url_launcher: ^6.3.1
+
+dev_dependencies:
+    flutter_test:
+        sdk: flutter
+    flutter_lints: ^5.0.0
+    build_runner: ^2.4.15
+    injectable_generator: ^2.6.3
+    json_serializable: ^6.9.4
+    flutter_launcher_icons: ^0.14.3
+    bloc_test: ^9.1.7
+    mocktail: ^1.0.4
+
+flutter_launcher_icons:
+    android: true
+    ios: true
+    image_path: "assets/images/logo.png"
+    remove_alpha_ios: true
+
+flutter:
+    generate: true
+    uses-material-design: true
+
+    assets:
+        - assets/images/logo.png
+        - assets/images/github.png
+        - assets/icons/
