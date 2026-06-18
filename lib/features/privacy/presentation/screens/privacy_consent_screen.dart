@@ -10,11 +10,23 @@ class PrivacyConsentScreen extends StatelessWidget {
 
   const PrivacyConsentScreen({super.key, required this.onAccepted});
 
+  static const _baseUrl = 'https://github.com/photowey/keeauth/blob/main';
+
+  static String _privacyUrl(Locale locale) {
+    if (locale.languageCode == 'zh') {
+      return locale.scriptCode == 'Hant'
+          ? '$_baseUrl/PRIVACY.zh-Hant.md'
+          : '$_baseUrl/PRIVACY.zh-CN.md';
+    }
+    return '$_baseUrl/PRIVACY.md';
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final locale = Localizations.localeOf(context);
 
     return Scaffold(
       body: SafeArea(
@@ -51,9 +63,7 @@ class PrivacyConsentScreen extends StatelessWidget {
               const SizedBox(height: 16),
               TextButton.icon(
                 onPressed: () async {
-                  final uri = Uri.parse(
-                    'https://github.com/photowey/keeauth/blob/main/PRIVACY.md',
-                  );
+                  final uri = Uri.parse(_privacyUrl(locale));
                   try {
                     await launchUrl(uri, mode: LaunchMode.externalApplication);
                   } catch (_) {}
