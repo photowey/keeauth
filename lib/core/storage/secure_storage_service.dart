@@ -26,6 +26,7 @@ class SecureStorageService {
   static const String _codeGroupSizeKey = 'code_group_size';
   static const String _passwordHashKey = 'app_password_hash';
   static const String _passwordSaltKey = 'app_password_salt';
+  static const String _privacyAcceptedKey = 'privacy_accepted';
 
   final FlutterSecureStorage _storage;
 
@@ -247,6 +248,16 @@ class SecureStorageService {
   String _hashPassword(String password, String salt) {
     final bytes = utf8.encode('$password$salt');
     return sha256.convert(bytes).toString();
+  }
+
+  // Privacy policy consent
+  Future<bool> hasAcceptedPrivacy() async {
+    final value = await _storage.read(key: _privacyAcceptedKey);
+    return value == 'true';
+  }
+
+  Future<void> setPrivacyAccepted(bool accepted) async {
+    await _storage.write(key: _privacyAcceptedKey, value: accepted.toString());
   }
 
   // Clear all

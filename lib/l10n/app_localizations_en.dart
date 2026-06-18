@@ -823,4 +823,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get biometricNotAvailable => 'Biometric not supported on this device';
+
+  @override
+  String get privacyPolicyTitle => 'Privacy Policy';
+
+  @override
+  String get privacyPolicyContent =>
+      'KeeAuth values your privacy.\n\n• All data is stored exclusively on your device\n• No personal information is collected or transmitted\n• No advertising or analytics SDKs\n• Camera is used only for QR code scanning';
+
+  @override
+  String get privacyPolicyViewFull => 'View Full Privacy Policy';
+
+  @override
+  String get privacyPolicyAgree => 'Agree and Continue';
+
+  @override
+  String get privacyPolicyDisagree => 'Disagree';
 }

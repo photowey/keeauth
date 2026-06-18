@@ -14,6 +14,7 @@ import 'features/authenticator/domain/usecases/authenticator_service.dart';
 import 'features/authenticator/presentation/bloc/authenticator_bloc.dart';
 import 'features/authenticator/presentation/screens/authenticator_list_screen.dart';
 import 'features/intro/presentation/screens/intro_screen.dart';
+import 'features/privacy/presentation/screens/privacy_consent_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +40,7 @@ class _KeeAuthAppState extends State<KeeAuthApp> with WidgetsBindingObserver {
   bool _isLocked = true;
   bool _initialized = false;
   bool _isFirstLaunch = false;
+  bool _privacyAccepted = false;
 
   @override
   void initState() {
@@ -58,6 +60,11 @@ class _KeeAuthAppState extends State<KeeAuthApp> with WidgetsBindingObserver {
 
   void _onIntroComplete() {
     setState(() => _isFirstLaunch = false);
+  }
+
+  void _onPrivacyAccepted() async {
+    await _secureStorage.setPrivacyAccepted(true);
+    setState(() => _privacyAccepted = true);
   }
 
   Future<void> _checkInitialLock() async {
@@ -248,7 +255,15 @@ class _KeeAuthAppState extends State<KeeAuthApp> with WidgetsBindingObserver {
       return BootSequence(
         onComplete: () async {
           await _checkInitialLock();
-          setState(() => _initialized = true);
+
+          final privacyOk = await _secureStorage.hasAcceptedPrivacy();
+          final hasSeenIntro = await _secureStorage.hasSeenIntro();
+
+          setState(() {
+            _privacyAccepted = privacyOk;
+            _isFirstLaunch = !hasSeenIntro;
+            _initialized = true;
+          });
 
           WidgetsBinding.instance.addPostFrameCallback((_) {
             blocCtx.read<AuthenticatorBloc>().add(LoadAuthenticators());
@@ -257,14 +272,14 @@ class _KeeAuthAppState extends State<KeeAuthApp> with WidgetsBindingObserver {
           Future.delayed(const Duration(milliseconds: 500), () async {
             final allowScreenshots = await _secureStorage.isScreenshotEnabled();
             await ScreenshotService.setSecure(!allowScreenshots);
-
-            final hasSeenIntro = await _secureStorage.hasSeenIntro();
-            if (mounted && !hasSeenIntro) {
-              setState(() => _isFirstLaunch = true);
-            }
           });
         },
       );
+    }
+
+    // Privacy consent must come first
+    if (!_privacyAccepted) {
+      return PrivacyConsentScreen(onAccepted: _onPrivacyAccepted);
     }
 
     // Show intro on first launch

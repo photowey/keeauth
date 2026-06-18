@@ -1676,6 +1676,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Biometric not supported on this device'**
   String get biometricNotAvailable;
+
+  /// No description provided for @privacyPolicyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicyTitle;
+
+  /// No description provided for @privacyPolicyContent.
+  ///
+  /// In en, this message translates to:
+  /// **'KeeAuth values your privacy.\n\n• All data is stored exclusively on your device\n• No personal information is collected or transmitted\n• No advertising or analytics SDKs\n• Camera is used only for QR code scanning'**
+  String get privacyPolicyContent;
+
+  /// No description provided for @privacyPolicyViewFull.
+  ///
+  /// In en, this message translates to:
+  /// **'View Full Privacy Policy'**
+  String get privacyPolicyViewFull;
+
+  /// No description provided for @privacyPolicyAgree.
+  ///
+  /// In en, this message translates to:
+  /// **'Agree and Continue'**
+  String get privacyPolicyAgree;
+
+  /// No description provided for @privacyPolicyDisagree.
+  ///
+  /// In en, this message translates to:
+  /// **'Disagree'**
+  String get privacyPolicyDisagree;
 }
 
 class _AppLocalizationsDelegate

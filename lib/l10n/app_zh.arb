@@ -300,5 +300,10 @@
   "every2Days": "每2天",
   "weekly": "每周",
   "setBackupPasswordDescription": "设置自动备份的密码",
-  "biometricNotAvailable": "此设备不支持生物识别"
+  "biometricNotAvailable": "此设备不支持生物识别",
+  "privacyPolicyTitle": "隐私政策",
+  "privacyPolicyContent": "KeeAuth 重视您的隐私。\n\n• 所有数据仅存储在您的设备上\n• 不收集、不传输任何个人信息\n• 不包含广告或分析SDK\n• 摄像头仅用于扫描二维码",
+  "privacyPolicyViewFull": "查看完整隐私政策",
+  "privacyPolicyAgree": "同意并继续",
+  "privacyPolicyDisagree": "不同意"
 }

@@ -812,6 +812,22 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get biometricNotAvailable => '此设备不支持生物识别';
+
+  @override
+  String get privacyPolicyTitle => '隐私政策';
+
+  @override
+  String get privacyPolicyContent =>
+      'KeeAuth 重视您的隐私。\n\n• 所有数据仅存储在您的设备上\n• 不收集、不传输任何个人信息\n• 不包含广告或分析SDK\n• 摄像头仅用于扫描二维码';
+
+  @override
+  String get privacyPolicyViewFull => '查看完整隐私政策';
+
+  @override
+  String get privacyPolicyAgree => '同意并继续';
+
+  @override
+  String get privacyPolicyDisagree => '不同意';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -1622,4 +1638,20 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get biometricNotAvailable => '此裝置不支援生物辨識';
+
+  @override
+  String get privacyPolicyTitle => '隱私政策';
+
+  @override
+  String get privacyPolicyContent =>
+      'KeeAuth 重視您的隱私。\n\n• 所有資料僅儲存在您的裝置上\n• 不收集、不傳輸任何個人資訊\n• 不包含廣告或分析SDK\n• 相機僅用於掃描二維碼';
+
+  @override
+  String get privacyPolicyViewFull => '查看完整隱私政策';
+
+  @override
+  String get privacyPolicyAgree => '同意並繼續';
+
+  @override
+  String get privacyPolicyDisagree => '不同意';
 }
