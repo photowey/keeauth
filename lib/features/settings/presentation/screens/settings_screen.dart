@@ -12,6 +12,7 @@ import 'package:keeauth/features/backup/domain/auto_backup_service.dart';
 import 'package:keeauth/features/backup/presentation/export_backup.dart';
 import 'package:keeauth/features/backup/presentation/screens/import_screen.dart';
 import 'package:keeauth/di/injection.dart';
+import 'package:keeauth/core/constant/app_constants.dart';
 
 /// Settings screen
 class SettingsScreen extends StatefulWidget {
@@ -1014,14 +1015,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ListTile(
               leading: const Icon(Icons.code),
               title: Text(l10n?.github ?? 'GitHub'),
-              subtitle: const Text('github.com/photowey/keeauth'),
-              onTap: () => _openExternalLink(Uri.parse('https://github.com/photowey/keeauth')),
+              subtitle: Text(Author.projectUrl.replaceFirst('https://', '')),
+              onTap: () => _openExternalLink(Uri.parse(Author.projectUrl)),
             ),
             ListTile(
               leading: const Icon(Icons.bug_report),
               title: Text(l10n?.reportIssue ?? 'Report Issue'),
               subtitle: Text(l10n?.helpUsImprove ?? 'Help us improve'),
-              onTap: () => _openExternalLink(Uri.parse('https://github.com/photowey/keeauth/issues')),
+              onTap: () => _openExternalLink(Uri.parse(Author.issueUrl)),
             ),
           ],
         );
