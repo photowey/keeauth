@@ -306,5 +306,16 @@
   "privacyPolicyViewFull": "View Full Privacy Policy",
   "privacyPolicyAgree": "Agree and Continue",
   "privacyPolicyDisagree": "Disagree",
-  "linkCopied": "Link copied — please open in browser"
+  "linkCopied": "Link copied — please open in browser",
+  "externalLinkTitle": "External Link",
+  "externalLinkContent": "You are about to open an external link in your browser.\n\n{url}",
+  "@externalLinkContent": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "externalLinkConfirm": "Open",
+  "externalLinkCancel": "Cancel"
 }

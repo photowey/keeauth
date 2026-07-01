@@ -306,5 +306,9 @@
   "privacyPolicyViewFull": "查看完整隱私政策",
   "privacyPolicyAgree": "同意並繼續",
   "privacyPolicyDisagree": "不同意",
-  "linkCopied": "連結已複製，請在瀏覽器中開啟"
+  "linkCopied": "連結已複製，請在瀏覽器中開啟",
+  "externalLinkTitle": "外部連結",
+  "externalLinkContent": "即將在瀏覽器中開啟外部連結。\n\n{url}",
+  "externalLinkConfirm": "開啟",
+  "externalLinkCancel": "取消"
 }

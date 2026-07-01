@@ -1712,6 +1712,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Link copied — please open in browser'**
   String get linkCopied;
+
+  /// No description provided for @externalLinkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'External Link'**
+  String get externalLinkTitle;
+
+  /// No description provided for @externalLinkContent.
+  ///
+  /// In en, this message translates to:
+  /// **'You are about to open an external link in your browser.\n\n{url}'**
+  String externalLinkContent(String url);
+
+  /// No description provided for @externalLinkConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get externalLinkConfirm;
+
+  /// No description provided for @externalLinkCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get externalLinkCancel;
 }
 
 class _AppLocalizationsDelegate

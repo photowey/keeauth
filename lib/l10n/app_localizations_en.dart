@@ -842,4 +842,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get linkCopied => 'Link copied — please open in browser';
+
+  @override
+  String get externalLinkTitle => 'External Link';
+
+  @override
+  String externalLinkContent(String url) {
+    return 'You are about to open an external link in your browser.\n\n$url';
+  }
+
+  @override
+  String get externalLinkConfirm => 'Open';
+
+  @override
+  String get externalLinkCancel => 'Cancel';
 }

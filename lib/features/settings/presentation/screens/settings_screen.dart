@@ -933,21 +933,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Future<void> _openGitHub() async {
-    final uri = Uri.parse('https://github.com/photowey/keeauth');
-    if (!await canLaunchUrl(uri)) {
+  Future<void> _openExternalLink(Uri uri) async {
+    final l10n = AppLocalizations.of(context);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n?.externalLinkTitle ?? 'External Link'),
+        content: Text(
+          l10n?.externalLinkContent('${uri.host}${uri.path}') ??
+              'You are about to open an external link.\n\n${uri.host}${uri.path}',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n?.externalLinkCancel ?? 'Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n?.externalLinkConfirm ?? 'Open'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true) {
       _copyAndHint(uri);
       return;
     }
-    try {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } catch (_) {
-      _copyAndHint(uri);
-    }
-  }
 
-  Future<void> _openIssueTracker() async {
-    final uri = Uri.parse('https://github.com/photowey/keeauth/issues');
     if (!await canLaunchUrl(uri)) {
       _copyAndHint(uri);
       return;
@@ -1002,13 +1015,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
               leading: const Icon(Icons.code),
               title: Text(l10n?.github ?? 'GitHub'),
               subtitle: const Text('github.com/photowey/keeauth'),
-              onTap: _openGitHub,
+              onTap: () => _openExternalLink(Uri.parse('https://github.com/photowey/keeauth')),
             ),
             ListTile(
               leading: const Icon(Icons.bug_report),
               title: Text(l10n?.reportIssue ?? 'Report Issue'),
               subtitle: Text(l10n?.helpUsImprove ?? 'Help us improve'),
-              onTap: _openIssueTracker,
+              onTap: () => _openExternalLink(Uri.parse('https://github.com/photowey/keeauth/issues')),
             ),
           ],
         );

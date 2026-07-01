@@ -10,6 +10,33 @@ class AboutUsPage extends StatelessWidget {
   const AboutUsPage({super.key});
 
   Future<void> _launch(BuildContext context, Uri uri) async {
+    final l10n = AppLocalizations.of(context);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n?.externalLinkTitle ?? 'External Link'),
+        content: Text(
+          (l10n?.externalLinkContent('${uri.host}${uri.path}') ??
+              'You are about to open an external link in your browser.\n\n${uri.host}${uri.path}'),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n?.externalLinkCancel ?? 'Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n?.externalLinkConfirm ?? 'Open'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true) {
+      _copyAndHint(context, uri);
+      return;
+    }
+
     try {
       if (await canLaunchUrl(uri)) {
         await launchUrl(uri, mode: LaunchMode.externalApplication);

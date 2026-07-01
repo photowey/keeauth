@@ -831,6 +831,20 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get linkCopied => '链接已复制，请在浏览器中打开';
+
+  @override
+  String get externalLinkTitle => '外部链接';
+
+  @override
+  String externalLinkContent(String url) {
+    return '即将在浏览器中打开外部链接。\n\n$url';
+  }
+
+  @override
+  String get externalLinkConfirm => '打开';
+
+  @override
+  String get externalLinkCancel => '取消';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -1660,4 +1674,18 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get linkCopied => '連結已複製，請在瀏覽器中開啟';
+
+  @override
+  String get externalLinkTitle => '外部連結';
+
+  @override
+  String externalLinkContent(String url) {
+    return '即將在瀏覽器中開啟外部連結。\n\n$url';
+  }
+
+  @override
+  String get externalLinkConfirm => '開啟';
+
+  @override
+  String get externalLinkCancel => '取消';
 }
