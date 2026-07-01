@@ -1706,6 +1706,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Disagree'**
   String get privacyPolicyDisagree;
+
+  /// No description provided for @linkCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied — please open in browser'**
+  String get linkCopied;
 }
 
 class _AppLocalizationsDelegate

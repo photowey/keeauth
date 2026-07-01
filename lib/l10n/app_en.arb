@@ -305,5 +305,6 @@
   "privacyPolicyContent": "KeeAuth values your privacy.\n\n• All data is stored exclusively on your device\n• No personal information is collected or transmitted\n• No advertising or analytics SDKs\n• Camera is used only for QR code scanning",
   "privacyPolicyViewFull": "View Full Privacy Policy",
   "privacyPolicyAgree": "Agree and Continue",
-  "privacyPolicyDisagree": "Disagree"
+  "privacyPolicyDisagree": "Disagree",
+  "linkCopied": "Link copied — please open in browser"
 }

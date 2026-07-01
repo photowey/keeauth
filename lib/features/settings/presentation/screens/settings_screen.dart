@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -934,15 +935,42 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future<void> _openGitHub() async {
     final uri = Uri.parse('https://github.com/photowey/keeauth');
-    if (await canLaunchUrl(uri)) {
+    if (!await canLaunchUrl(uri)) {
+      _copyAndHint(uri);
+      return;
+    }
+    try {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } catch (_) {
+      _copyAndHint(uri);
     }
   }
 
   Future<void> _openIssueTracker() async {
     final uri = Uri.parse('https://github.com/photowey/keeauth/issues');
-    if (await canLaunchUrl(uri)) {
+    if (!await canLaunchUrl(uri)) {
+      _copyAndHint(uri);
+      return;
+    }
+    try {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } catch (_) {
+      _copyAndHint(uri);
+    }
+  }
+
+  void _copyAndHint(Uri uri) {
+    Clipboard.setData(ClipboardData(text: uri.toString()));
+    if (mounted) {
+      final l10n = AppLocalizations.of(context);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            l10n?.linkCopied ?? 'Link copied — please open in browser',
+          ),
+          duration: const Duration(seconds: 2),
+        ),
+      );
     }
   }
 

@@ -305,5 +305,6 @@
   "privacyPolicyContent": "KeeAuth 重視您的隱私。\n\n• 所有資料僅儲存在您的裝置上\n• 不收集、不傳輸任何個人資訊\n• 不包含廣告或分析SDK\n• 相機僅用於掃描二維碼",
   "privacyPolicyViewFull": "查看完整隱私政策",
   "privacyPolicyAgree": "同意並繼續",
-  "privacyPolicyDisagree": "不同意"
+  "privacyPolicyDisagree": "不同意",
+  "linkCopied": "連結已複製，請在瀏覽器中開啟"
 }

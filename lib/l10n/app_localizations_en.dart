@@ -839,4 +839,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyPolicyDisagree => 'Disagree';
+
+  @override
+  String get linkCopied => 'Link copied — please open in browser';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:keeauth/core/constant/app_constants.dart';
 import 'package:keeauth/core/utils/keys.dart';
@@ -10,13 +11,28 @@ class AboutUsPage extends StatelessWidget {
 
   Future<void> _launch(BuildContext context, Uri uri) async {
     try {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } catch (_) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No app found to handle this link')),
-        );
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+      } else {
+        _copyAndHint(context, uri);
       }
+    } catch (_) {
+      _copyAndHint(context, uri);
+    }
+  }
+
+  void _copyAndHint(BuildContext context, Uri uri) {
+    Clipboard.setData(ClipboardData(text: uri.toString()));
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            AppLocalizations.of(context)?.linkCopied ??
+                'Link copied — please open in browser',
+          ),
+          duration: const Duration(seconds: 2),
+        ),
+      );
     }
   }
 

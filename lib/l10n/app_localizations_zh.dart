@@ -828,6 +828,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get privacyPolicyDisagree => '不同意';
+
+  @override
+  String get linkCopied => '链接已复制，请在浏览器中打开';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -1654,4 +1657,7 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get privacyPolicyDisagree => '不同意';
+
+  @override
+  String get linkCopied => '連結已複製，請在瀏覽器中開啟';
 }
