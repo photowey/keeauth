@@ -1,35 +1,28 @@
 buildscript {
     repositories {
+        google()
+        mavenCentral()
         mavenLocal()
-
         maven { url = uri("https://jitpack.io") }
         maven { url = uri("https://maven.aliyun.com/repository/public") }
         maven { url = uri("https://maven.aliyun.com/repository/central") }
         maven { url = uri("https://maven.aliyun.com/repository/google") }
-        maven { url = uri("https://maven.aliyun.com/repository/jcenter") }
         maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
-        maven { url = uri("https://maven.aliyun.com/nexus/content/groups/public") }
         maven { url = uri("https://storage.googleapis.com/download.flutter.io") }
     }
 }
 
 allprojects {
     repositories {
+        google()
+        mavenCentral()
         mavenLocal()
-
         maven { url = uri("https://jitpack.io") }
         maven { url = uri("https://maven.aliyun.com/repository/public") }
         maven { url = uri("https://maven.aliyun.com/repository/central") }
         maven { url = uri("https://maven.aliyun.com/repository/google") }
-        maven { url = uri("https://maven.aliyun.com/repository/jcenter") }
         maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
-        maven { url = uri("https://maven.aliyun.com/nexus/content/groups/public") }
         maven { url = uri("https://storage.googleapis.com/download.flutter.io") }
-
-        /*
-          google()
-          mavenCentral()
-         */
     }
 }
 
