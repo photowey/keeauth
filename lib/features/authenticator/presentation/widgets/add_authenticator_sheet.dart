@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:keeauth/l10n/app_localizations.dart';
+import 'package:keeauth/core/permission/camera_permission.dart';
 import 'package:keeauth/features/backup/presentation/restore_backup.dart';
 import 'package:keeauth/features/backup/presentation/screens/import_screen.dart';
 import 'package:keeauth/features/authenticator/presentation/bloc/authenticator_bloc.dart';
@@ -595,6 +596,15 @@ class _AddAuthenticatorSheetState extends State<AddAuthenticatorSheet> {
   }
 
   Future<void> _openScanner() async {
+    // Explain the purpose in-app first, then request the system permission.
+    final permission = await ensureCameraPermission(context);
+    if (!mounted) return;
+
+    if (permission != CameraPermissionResult.granted) {
+      await showCameraPermissionDenied(context, permission);
+      return;
+    }
+
     Navigator.pop(context);
     await Navigator.push<String>(
       context,

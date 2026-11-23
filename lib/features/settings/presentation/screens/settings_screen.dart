@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:keeauth/core/storage/secure_storage_service.dart';
 import 'package:keeauth/core/auth/biometric_service.dart';
@@ -13,6 +14,9 @@ import 'package:keeauth/features/backup/presentation/export_backup.dart';
 import 'package:keeauth/features/backup/presentation/screens/import_screen.dart';
 import 'package:keeauth/di/injection.dart';
 import 'package:keeauth/core/constant/app_constants.dart';
+import 'package:keeauth/features/privacy/presentation/screens/privacy_detail_screen.dart';
+import 'package:keeauth/features/privacy/presentation/screens/collected_info_screen.dart';
+import 'package:keeauth/features/privacy/presentation/screens/sdk_list_screen.dart';
 
 /// Settings screen
 class SettingsScreen extends StatefulWidget {
@@ -37,6 +41,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   int _autoBackupFrequency = 86400; // seconds, default 24h
   int _codeGroupSize = 3;
   bool _hasPassword = false;
+  String _appVersion = '';
 
   @override
   void initState() {
@@ -56,9 +61,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final autoBackupFrequency = await _secureStorage.getAutoBackupFrequency();
     final codeGroupSize = await _secureStorage.getCodeGroupSize();
     final hasPassword = await _secureStorage.hasPassword();
+    final packageInfo = await PackageInfo.fromPlatform();
 
 
     setState(() {
+      _appVersion = packageInfo.version;
       _autoBackupEnabled = autoBackupEnabled;
       _autoBackupFrequency = autoBackupFrequency;
       _biometricEnabled = biometricEnabled;
@@ -95,6 +102,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
           _buildThemeTile(),
           _buildSortModeTile(),
           _buildCodeGroupSizeTile(),
+          const Divider(),
+          _buildSectionHeader(
+            l10n?.privacyAndCompliance ?? 'Privacy & Compliance',
+          ),
+          _buildPrivacyPolicyTile(),
+          _buildCollectedInfoTile(),
+          _buildSdkListTile(),
           const Divider(),
           _buildSectionHeader(l10n?.about ?? 'About'),
           _buildAboutTile(),
@@ -988,18 +1002,65 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
+  Widget _buildPrivacyPolicyTile() {
+    final l10n = AppLocalizations.of(context);
+    return ListTile(
+      leading: const Icon(Icons.privacy_tip_outlined),
+      title: Text(l10n?.privacyPolicyTitle ?? 'Privacy Policy'),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const PrivacyDetailScreen()),
+        );
+      },
+    );
+  }
+
+  Widget _buildCollectedInfoTile() {
+    final l10n = AppLocalizations.of(context);
+    return ListTile(
+      leading: const Icon(Icons.inventory_2_outlined),
+      title: Text(
+        l10n?.collectedInfoList ?? 'Collected Personal Information',
+      ),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const CollectedInfoScreen()),
+        );
+      },
+    );
+  }
+
+  Widget _buildSdkListTile() {
+    final l10n = AppLocalizations.of(context);
+    return ListTile(
+      leading: const Icon(Icons.hub_outlined),
+      title: Text(l10n?.sdkSharedList ?? 'Third-Party SDK List'),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const SdkListScreen()),
+        );
+      },
+    );
+  }
+
   Widget _buildAboutTile() {
     final l10n = AppLocalizations.of(context);
     return ListTile(
       leading: const Icon(Icons.info_outline),
       title: Text(l10n?.about ?? 'About'),
-      subtitle: Text('${l10n?.version ?? 'Version'} 1.0.0'),
+      subtitle: Text('${l10n?.version ?? 'Version'} $_appVersion'.trim()),
       trailing: const Icon(Icons.chevron_right),
       onTap: () {
         showAboutDialog(
           context: context,
           applicationName: 'KeeAuth',
-          applicationVersion: '1.0.0',
+          applicationVersion: _appVersion,
           applicationLegalese:
               '© 2025-present photowey\n\nLicensed under the GNU GPL v3.0.',
           applicationIcon: Container(

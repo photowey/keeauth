@@ -33,14 +33,12 @@
             </feMerge>
         </filter>
 
-        <clipPath id="circleClip">
-            <circle cx="200" cy="200" r="130"/>
-        </clipPath>
     </defs>
 
     <g transform="translate(-70,-70)">
-        <g clip-path="url(#circleClip)">
-            <rect width="400" height="400" fill="url(#bgGrad)" rx="20"/>
+        <g>
+            <!-- 方形背景 + 轻微圆角，铺满 260×260 画布，避免圆形留白 -->
+            <rect x="70" y="70" width="260" height="260" rx="38.5" fill="url(#bgGrad)"/>
 
             <g transform="translate(200, 200)" filter="url(#glow)">
 

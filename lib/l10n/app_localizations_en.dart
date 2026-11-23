@@ -841,6 +841,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get privacyPolicyDisagree => 'Disagree';
 
   @override
+  String get sensitiveInfoTitle => 'How We Handle Sensitive Information';
+
+  @override
+  String get sensitiveCameraLabel => 'Camera';
+
+  @override
+  String get sensitiveCameraDescription =>
+      'Used only to scan QR codes when adding authenticators. Frames are processed in real time on your device; never uploaded, stored, or shared.';
+
+  @override
+  String get sensitiveBiometricLabel => 'Biometric data (fingerprint / face)';
+
+  @override
+  String get sensitiveBiometricDescription =>
+      'Used only to unlock the app. Handled by the system prompt; the app never accesses raw biometric data.';
+
+  @override
+  String get sensitiveSecretLabel => '2FA secrets';
+
+  @override
+  String get sensitiveSecretDescription =>
+      'Used only to generate verification codes. Entered by you and stored in the encrypted local database; never uploaded or shared.';
+
+  @override
   String get linkCopied => 'Link copied — please open in browser';
 
   @override
@@ -856,4 +880,78 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get externalLinkCancel => 'Cancel';
+
+  @override
+  String get privacyAndCompliance => 'Privacy & Compliance';
+
+  @override
+  String get collectedInfoList => 'Collected Personal Information';
+
+  @override
+  String get sdkSharedList => 'Third-Party SDK List';
+
+  @override
+  String get collectedInfoNote =>
+      'All information below is processed and stored only on your device. KeeAuth has no servers and does not upload or share it.';
+
+  @override
+  String get infoCategory => 'Information';
+
+  @override
+  String get collectPurpose => 'Purpose';
+
+  @override
+  String get collectMethod => 'Collection method';
+
+  @override
+  String get usageScope => 'Usage scope';
+
+  @override
+  String get retentionPeriod => 'Retention';
+
+  @override
+  String get deletionMethod => 'Deletion';
+
+  @override
+  String get sdkProvider => 'Provider';
+
+  @override
+  String get sdkPurpose => 'Purpose';
+
+  @override
+  String get sdkInfoCollected => 'Personal information involved';
+
+  @override
+  String get sdkSharing => 'Sharing';
+
+  @override
+  String get sdkPrivacyPolicy => 'Privacy policy';
+
+  @override
+  String get sdkListNote =>
+      'All SDKs below run only on your device and contain no advertising, analytics, or user-tracking functionality. Some detection tools may identify Google ML Kit as a Google/Firebase component; it is used solely for on-device QR code recognition and never connects to the network or uploads data.';
+
+  @override
+  String get cameraPermissionTitle => 'Camera Usage';
+
+  @override
+  String get cameraPermissionRationale =>
+      'KeeAuth needs the camera to scan QR codes when adding authenticator accounts. Camera frames are processed only on your device and are never uploaded, stored, or shared with any third party.';
+
+  @override
+  String get cameraPermissionAllow => 'Continue';
+
+  @override
+  String get cameraPermissionCancel => 'Cancel';
+
+  @override
+  String get cameraPermissionDenied =>
+      'Camera permission was not granted, so QR code scanning is unavailable.';
+
+  @override
+  String get cameraPermissionPermanentlyDenied =>
+      'Camera permission has been denied. Please enable it in system settings and try again.';
+
+  @override
+  String get openSystemSettings => 'Open Settings';
 }

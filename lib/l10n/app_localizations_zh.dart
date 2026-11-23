@@ -830,6 +830,30 @@ class AppLocalizationsZh extends AppLocalizations {
   String get privacyPolicyDisagree => '不同意';
 
   @override
+  String get sensitiveInfoTitle => '个人敏感信息处理说明';
+
+  @override
+  String get sensitiveCameraLabel => '相机';
+
+  @override
+  String get sensitiveCameraDescription =>
+      '仅用于扫描二维码添加验证器。画面仅在您的设备本地实时处理，不上传、不保存、不共享。';
+
+  @override
+  String get sensitiveBiometricLabel => '生物识别（指纹 / 面容）';
+
+  @override
+  String get sensitiveBiometricDescription =>
+      '仅用于解锁 App。由系统认证弹窗处理，App 不接触原始生物特征数据。';
+
+  @override
+  String get sensitiveSecretLabel => '2FA 密钥';
+
+  @override
+  String get sensitiveSecretDescription =>
+      '仅用于生成动态验证码。由您主动输入，存放在本机加密数据库，不上传、不共享。';
+
+  @override
   String get linkCopied => '链接已复制，请在浏览器中打开';
 
   @override
@@ -845,6 +869,78 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get externalLinkCancel => '取消';
+
+  @override
+  String get privacyAndCompliance => '隐私与合规';
+
+  @override
+  String get collectedInfoList => '已收集个人信息清单';
+
+  @override
+  String get sdkSharedList => '第三方 SDK 共享清单';
+
+  @override
+  String get collectedInfoNote =>
+      '以下信息均由您的设备本地处理与存储。KeeAuth 没有服务器，不会上传或共享这些信息。';
+
+  @override
+  String get infoCategory => '信息类型';
+
+  @override
+  String get collectPurpose => '收集目的';
+
+  @override
+  String get collectMethod => '收集方式';
+
+  @override
+  String get usageScope => '使用范围';
+
+  @override
+  String get retentionPeriod => '保存期限';
+
+  @override
+  String get deletionMethod => '删除方式';
+
+  @override
+  String get sdkProvider => '提供方';
+
+  @override
+  String get sdkPurpose => '用途';
+
+  @override
+  String get sdkInfoCollected => '涉及的个人信息';
+
+  @override
+  String get sdkSharing => '共享情况';
+
+  @override
+  String get sdkPrivacyPolicy => '隐私政策';
+
+  @override
+  String get sdkListNote =>
+      '以上 SDK 均仅在设备本地运行，不含广告、统计分析或用户追踪功能。部分检测工具可能将 Google ML Kit 识别为 Google/Firebase 组件，该组件仅用于本地二维码识别，不联网、不上传数据。';
+
+  @override
+  String get cameraPermissionTitle => '相机使用说明';
+
+  @override
+  String get cameraPermissionRationale =>
+      'KeeAuth 需要使用相机扫描二维码以添加验证器账户。相机画面仅在您的设备本地处理，不会上传、保存或与任何第三方共享。';
+
+  @override
+  String get cameraPermissionAllow => '继续';
+
+  @override
+  String get cameraPermissionCancel => '取消';
+
+  @override
+  String get cameraPermissionDenied => '未获得相机权限，暂时无法扫描二维码。';
+
+  @override
+  String get cameraPermissionPermanentlyDenied => '相机权限已被拒绝，请前往系统设置开启后重试。';
+
+  @override
+  String get openSystemSettings => '前往设置';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hant`).
@@ -1673,6 +1769,30 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
   String get privacyPolicyDisagree => '不同意';
 
   @override
+  String get sensitiveInfoTitle => '個人敏感資訊處理說明';
+
+  @override
+  String get sensitiveCameraLabel => '相機';
+
+  @override
+  String get sensitiveCameraDescription =>
+      '僅用於掃描二維碼新增驗證器。畫面僅在您的裝置本機即時處理，不上傳、不儲存、不共享。';
+
+  @override
+  String get sensitiveBiometricLabel => '生物辨識（指紋 / 臉部）';
+
+  @override
+  String get sensitiveBiometricDescription =>
+      '僅用於解鎖 App。由系統認證彈窗處理，App 不接觸原始生物特徵資料。';
+
+  @override
+  String get sensitiveSecretLabel => '2FA 密鑰';
+
+  @override
+  String get sensitiveSecretDescription =>
+      '僅用於產生動態驗證碼。由您主動輸入，存放於本機加密資料庫，不上傳、不共享。';
+
+  @override
   String get linkCopied => '連結已複製，請在瀏覽器中開啟';
 
   @override
@@ -1688,4 +1808,76 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get externalLinkCancel => '取消';
+
+  @override
+  String get privacyAndCompliance => '隱私與合規';
+
+  @override
+  String get collectedInfoList => '已收集個人資訊清單';
+
+  @override
+  String get sdkSharedList => '第三方 SDK 共享清單';
+
+  @override
+  String get collectedInfoNote =>
+      '以下資訊均由您的裝置本機處理與儲存。KeeAuth 沒有伺服器，不會上傳或共享這些資訊。';
+
+  @override
+  String get infoCategory => '資訊類型';
+
+  @override
+  String get collectPurpose => '收集目的';
+
+  @override
+  String get collectMethod => '收集方式';
+
+  @override
+  String get usageScope => '使用範圍';
+
+  @override
+  String get retentionPeriod => '保存期限';
+
+  @override
+  String get deletionMethod => '刪除方式';
+
+  @override
+  String get sdkProvider => '提供方';
+
+  @override
+  String get sdkPurpose => '用途';
+
+  @override
+  String get sdkInfoCollected => '涉及的個人資訊';
+
+  @override
+  String get sdkSharing => '共享情況';
+
+  @override
+  String get sdkPrivacyPolicy => '隱私政策';
+
+  @override
+  String get sdkListNote =>
+      '以上 SDK 均僅在裝置本機執行，不含廣告、統計分析或使用者追蹤功能。部分檢測工具可能將 Google ML Kit 識別為 Google/Firebase 元件，該元件僅用於本機二維碼識別，不連網、不上傳資料。';
+
+  @override
+  String get cameraPermissionTitle => '相機使用說明';
+
+  @override
+  String get cameraPermissionRationale =>
+      'KeeAuth 需要使用相機掃描二維碼以新增驗證器帳戶。相機畫面僅在您的裝置本機處理，不會上傳、儲存或與任何第三方共享。';
+
+  @override
+  String get cameraPermissionAllow => '繼續';
+
+  @override
+  String get cameraPermissionCancel => '取消';
+
+  @override
+  String get cameraPermissionDenied => '未取得相機權限，暫時無法掃描二維碼。';
+
+  @override
+  String get cameraPermissionPermanentlyDenied => '相機權限已被拒絕，請前往系統設定開啟後重試。';
+
+  @override
+  String get openSystemSettings => '前往設定';
 }

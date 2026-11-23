@@ -13,6 +13,7 @@ class MainMenuSheet extends StatelessWidget {
   final VoidCallback? onManageCategories;
   final VoidCallback? onBackup;
   final VoidCallback? onSettings;
+  final VoidCallback? onPrivacy;
   final VoidCallback? onAbout;
 
   const MainMenuSheet({
@@ -22,6 +23,7 @@ class MainMenuSheet extends StatelessWidget {
     this.onManageCategories,
     this.onBackup,
     this.onSettings,
+    this.onPrivacy,
     this.onAbout,
   });
 
@@ -132,6 +134,15 @@ class MainMenuSheet extends StatelessWidget {
                 onTap: () {
                   Navigator.pop(context);
                   onSettings?.call();
+                },
+              ),
+              _buildMenuItem(
+                context,
+                icon: Icons.privacy_tip_outlined,
+                label: l10n?.privacyPolicyTitle ?? 'Privacy Policy',
+                onTap: () {
+                  Navigator.pop(context);
+                  onPrivacy?.call();
                 },
               ),
               _buildMenuItem(
@@ -279,6 +290,7 @@ Future<void> showMainMenu(
   VoidCallback? onManageCategories,
   VoidCallback? onBackup,
   VoidCallback? onSettings,
+  VoidCallback? onPrivacy,
   VoidCallback? onAbout,
 }) {
   return showModalBottomSheet(
@@ -291,6 +303,7 @@ Future<void> showMainMenu(
       onManageCategories: onManageCategories,
       onBackup: onBackup,
       onSettings: onSettings,
+      onPrivacy: onPrivacy,
       onAbout: onAbout,
     ),
   );

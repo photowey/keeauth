@@ -9,6 +9,7 @@ import 'package:keeauth/features/backup/presentation/export_backup.dart';
 import 'package:keeauth/features/backup/presentation/restore_backup.dart';
 import 'package:keeauth/features/backup/presentation/screens/import_screen.dart';
 import 'package:keeauth/features/settings/presentation/screens/settings_screen.dart';
+import 'package:keeauth/features/privacy/presentation/screens/privacy_detail_screen.dart';
 import 'package:keeauth/features/authenticator/presentation/bloc/authenticator_bloc.dart';
 import 'package:keeauth/features/authenticator/presentation/widgets/authenticator_list_item.dart';
 import 'package:keeauth/features/authenticator/presentation/widgets/authenticator_qr_sheet.dart';
@@ -192,6 +193,14 @@ class _AuthenticatorListScreenState extends State<AuthenticatorListScreen> {
           MaterialPageRoute(builder: (context) => const SettingsScreen()),
         );
         _loadSettings();
+      },
+      onPrivacy: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const PrivacyDetailScreen(),
+          ),
+        );
       },
       onAbout: () {
         Navigator.push(

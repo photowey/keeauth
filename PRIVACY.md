@@ -1,10 +1,12 @@
 # Privacy Policy
 
-**Last updated: 2026-06-19**
+**Last updated: 2026-11-23**
 
 KeeAuth ("we", "our", or "us") is committed to protecting your privacy.
-This policy explains how KeeAuth handles your data, covering the **purpose**,
-**method**, and **scope** of any personal information processing.
+This policy explains the **purpose**, **method**, and **scope** of personal
+information processing, in accordance with the Personal Information Protection
+Law of the People's Republic of China and applicable app compliance
+requirements.
 
 ---
 
@@ -14,16 +16,41 @@ KeeAuth processes the following types of user-provided content, **all stored
 exclusively on your device**:
 
 - **2FA Secrets & Account Information** — TOTP/HOTP secret keys, account names,
-  and issuer names that you manually enter or scan via QR code.
+  and issuer names that you manually enter, scan via QR code, or import from a
+  backup file.
 - **Backup Files** — Encrypted exports of your authenticator data.
 - **App Password** — A locally hashed password you set to lock the app.
 - **Biometric Data** — Fingerprint or face recognition, handled entirely by the
-  operating system (Android Keystore / iOS Keychain).
+  operating system (Android Keystore / iOS Secure Enclave).
 - **Preferences** — Theme, language, auto-lock settings.
 
 ---
 
-## 2. Purpose of Processing
+## 2. Sensitive Personal Information
+
+We process the following **sensitive personal information**. For each item we
+set out its **purpose, method, and scope**:
+
+- **Camera** — **Purpose:** scan QR codes to add authenticator accounts.
+  **Method:** the camera preview is processed in real time on your device.
+  **Scope:** frames are never uploaded, stored, or shared with any third party.
+- **Biometric information (fingerprint / face)** — **Purpose:** unlock the app.
+  **Method:** handled by the system authentication prompt. **Scope:** the app
+  never receives or stores raw biometric data; it is managed by Android
+  Keystore / iOS Secure Enclave.
+- **2FA secrets** — **Purpose:** generate verification codes. **Method:** you
+  enter them manually or scan a QR code; they are stored in the encrypted local
+  database (SQLCipher, AES-256). **Scope:** never uploaded or shared.
+- **Device storage (backup files)** — **Purpose:** save and restore encrypted
+  backups. **Method:** you choose the location and the file is encrypted with
+  your password. **Scope:** the app never uploads backups automatically.
+
+Before the system camera permission prompt appears, the app explains the
+**purpose** of the camera in its own dialog.
+
+---
+
+## 3. Purpose of Processing
 
 | Purpose | Explanation |
 |---------|-------------|
@@ -37,7 +64,7 @@ servers and does not transmit your data anywhere.
 
 ---
 
-## 3. Method of Collection / Processing
+## 4. Method of Collection / Processing
 
 | Data | How it enters the app | Processing location |
 |------|----------------------|---------------------|
@@ -51,28 +78,42 @@ explicitly provide.
 
 ---
 
-## 4. Scope of Data Usage
+## 5. Scope of Data Usage
 
 - **Local only** — All data is processed and stored on your device.
-- **No transmission** — KeeAuth does not have any backend servers, analytics
-  SDKs, advertising SDKs, or crash reporting services.
+- **No transmission** — KeeAuth has no backend servers and no advertising,
+  analytics, or tracking SDKs. It does not upload your data.
+- **Google ML Kit** — The on-device QR recognition component may be identified
+  by some tools as a Google/Firebase component; it runs fully offline and never
+  uploads data.
 - **No third-party sharing** — Your data is never shared with any third party.
 - **No network requests** — The app makes no network requests unless you
   explicitly choose to open a GitHub link from the About page.
 
 ---
 
-## 5. Permissions
+## 6. Permissions
 
 | Permission | Purpose |
 |-----------|---------|
-| Camera | Scanning QR codes to add authenticators |
+| Camera | Scanning QR codes to add authenticators. The app explains this purpose in its own dialog before the system permission prompt appears. |
 | Biometric | Fingerprint / face unlock |
 | Storage | Saving and restoring encrypted backup files |
 
+You may revoke any permission in system settings; the related feature will then
+be unavailable.
+
 ---
 
-## 6. Your Control
+## 7. Collected Information List & Third-Party SDK List
+
+You can review the **Collected Personal Information** list and the
+**Third-Party SDK List** at any time under **Settings → Privacy & Compliance**
+in the app. This privacy policy is also available there.
+
+---
+
+## 8. Your Control
 
 - You can delete any authenticator entry at any time within the app.
 - You can delete all app data via Android / iOS system settings.
@@ -81,13 +122,14 @@ explicitly provide.
 
 ---
 
-## 7. Changes
+## 9. Changes
 
-We may update this policy. Changes will be reflected in the app's next update.
+We may update this policy. Changes will be reflected in the app's next update
+and on this page.
 
 ---
 
-## 8. Contact
+## 10. Contact
 
 - GitHub: [github.com/photowey/keeauth](https://github.com/photowey/keeauth)
 - Email: photowey@gmail.com

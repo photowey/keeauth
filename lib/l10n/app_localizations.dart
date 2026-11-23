@@ -1707,6 +1707,48 @@ abstract class AppLocalizations {
   /// **'Disagree'**
   String get privacyPolicyDisagree;
 
+  /// No description provided for @sensitiveInfoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How We Handle Sensitive Information'**
+  String get sensitiveInfoTitle;
+
+  /// No description provided for @sensitiveCameraLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get sensitiveCameraLabel;
+
+  /// No description provided for @sensitiveCameraDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Used only to scan QR codes when adding authenticators. Frames are processed in real time on your device; never uploaded, stored, or shared.'**
+  String get sensitiveCameraDescription;
+
+  /// No description provided for @sensitiveBiometricLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric data (fingerprint / face)'**
+  String get sensitiveBiometricLabel;
+
+  /// No description provided for @sensitiveBiometricDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Used only to unlock the app. Handled by the system prompt; the app never accesses raw biometric data.'**
+  String get sensitiveBiometricDescription;
+
+  /// No description provided for @sensitiveSecretLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'2FA secrets'**
+  String get sensitiveSecretLabel;
+
+  /// No description provided for @sensitiveSecretDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Used only to generate verification codes. Entered by you and stored in the encrypted local database; never uploaded or shared.'**
+  String get sensitiveSecretDescription;
+
   /// No description provided for @linkCopied.
   ///
   /// In en, this message translates to:
@@ -1736,6 +1778,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cancel'**
   String get externalLinkCancel;
+
+  /// No description provided for @privacyAndCompliance.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy & Compliance'**
+  String get privacyAndCompliance;
+
+  /// No description provided for @collectedInfoList.
+  ///
+  /// In en, this message translates to:
+  /// **'Collected Personal Information'**
+  String get collectedInfoList;
+
+  /// No description provided for @sdkSharedList.
+  ///
+  /// In en, this message translates to:
+  /// **'Third-Party SDK List'**
+  String get sdkSharedList;
+
+  /// No description provided for @collectedInfoNote.
+  ///
+  /// In en, this message translates to:
+  /// **'All information below is processed and stored only on your device. KeeAuth has no servers and does not upload or share it.'**
+  String get collectedInfoNote;
+
+  /// No description provided for @infoCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Information'**
+  String get infoCategory;
+
+  /// No description provided for @collectPurpose.
+  ///
+  /// In en, this message translates to:
+  /// **'Purpose'**
+  String get collectPurpose;
+
+  /// No description provided for @collectMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Collection method'**
+  String get collectMethod;
+
+  /// No description provided for @usageScope.
+  ///
+  /// In en, this message translates to:
+  /// **'Usage scope'**
+  String get usageScope;
+
+  /// No description provided for @retentionPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'Retention'**
+  String get retentionPeriod;
+
+  /// No description provided for @deletionMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Deletion'**
+  String get deletionMethod;
+
+  /// No description provided for @sdkProvider.
+  ///
+  /// In en, this message translates to:
+  /// **'Provider'**
+  String get sdkProvider;
+
+  /// No description provided for @sdkPurpose.
+  ///
+  /// In en, this message translates to:
+  /// **'Purpose'**
+  String get sdkPurpose;
+
+  /// No description provided for @sdkInfoCollected.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal information involved'**
+  String get sdkInfoCollected;
+
+  /// No description provided for @sdkSharing.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing'**
+  String get sdkSharing;
+
+  /// No description provided for @sdkPrivacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get sdkPrivacyPolicy;
+
+  /// No description provided for @sdkListNote.
+  ///
+  /// In en, this message translates to:
+  /// **'All SDKs below run only on your device and contain no advertising, analytics, or user-tracking functionality. Some detection tools may identify Google ML Kit as a Google/Firebase component; it is used solely for on-device QR code recognition and never connects to the network or uploads data.'**
+  String get sdkListNote;
+
+  /// No description provided for @cameraPermissionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera Usage'**
+  String get cameraPermissionTitle;
+
+  /// No description provided for @cameraPermissionRationale.
+  ///
+  /// In en, this message translates to:
+  /// **'KeeAuth needs the camera to scan QR codes when adding authenticator accounts. Camera frames are processed only on your device and are never uploaded, stored, or shared with any third party.'**
+  String get cameraPermissionRationale;
+
+  /// No description provided for @cameraPermissionAllow.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get cameraPermissionAllow;
+
+  /// No description provided for @cameraPermissionCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cameraPermissionCancel;
+
+  /// No description provided for @cameraPermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera permission was not granted, so QR code scanning is unavailable.'**
+  String get cameraPermissionDenied;
+
+  /// No description provided for @cameraPermissionPermanentlyDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera permission has been denied. Please enable it in system settings and try again.'**
+  String get cameraPermissionPermanentlyDenied;
+
+  /// No description provided for @openSystemSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Settings'**
+  String get openSystemSettings;
 }
 
 class _AppLocalizationsDelegate
